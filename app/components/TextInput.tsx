@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 import React, {PropsWithChildren} from 'react';
 import {Icon, Input} from 'native-base';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {colors} from '../config';
 import {fonts} from '../utils';
+import AppIcon from './AppIcon';
 
 type TextInputType = React.FC<
   PropsWithChildren<{
@@ -13,28 +13,39 @@ type TextInputType = React.FC<
     maxHeight?: number;
     multiline?: boolean;
     onChange: (value: any) => void;
+    IconComponent?: React.FC<PropsWithChildren<{name?: string}>> | any;
+    iconName?: string;
+    iconColor?: string;
+    iconSize?: string | number;
+    autoFocus?: boolean;
   }>
 >;
 
 const TextInput: TextInputType = ({
   placeholder,
-  secureTextEntry,
+  secureTextEntry = false,
   maxHeight,
   multiline,
   onChange,
+  IconComponent,
+  iconName,
+  iconColor = colors.white,
+  iconSize = 5,
+  autoFocus = false,
 }) => {
   return (
     <Input
       placeholder={placeholder}
       style={styles.input}
       backgroundColor={colors.lightBlack}
-      borderWidth={2}
-      paddingLeft={5}
-      letterSpacing={2}
+      letterSpacing={1}
       borderTopWidth="0"
       borderBottomWidth="0"
       borderLeftWidth="0"
       borderRightWidth="0"
+      autoCapitalize="none"
+      autoCorrect={false}
+      autoFocus={autoFocus}
       maxHeight={maxHeight}
       multiline={multiline}
       onChangeText={value => onChange(value)}
@@ -45,12 +56,14 @@ const TextInput: TextInputType = ({
       marginTop={2}
       marginBottom={2}
       InputLeftElement={
-        <Icon
-          as={<MaterialCommunityIcons name="email" />}
-          color={colors.white}
-          size={5}
-          ml={2}
-        />
+        IconComponent && (
+          <Icon
+            as={IconComponent && <IconComponent name={iconName} />}
+            size={iconSize}
+            color={iconColor}
+            ml={2}
+          />
+        )
       }
       secureTextEntry={secureTextEntry}
     />
@@ -61,10 +74,10 @@ export default TextInput;
 
 const styles = StyleSheet.create({
   input: {
-    fontSize: fonts.fontSize(25),
+    fontSize: fonts.fontSize(16),
     color: colors.white,
-    paddingLeft: 10,
     paddingRight: 10,
+    paddingLeft: 10,
     aspectRatio: 1 / 0.17,
   },
 });

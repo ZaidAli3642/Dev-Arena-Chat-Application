@@ -1,53 +1,50 @@
-import {Image, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {AppButton, AppText, Screen, Select, TextInput} from '../components';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Image} from 'native-base';
+import {colors, fontWeight} from '../config';
 
-import {AppButton, AppText, Screen, TextInput} from '../components';
-import {colors} from '../config';
-
-const LoginScreen = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const login = () => {
-    setIsLoading(true);
-  };
-
+const RegisterScreen = () => {
   return (
     <Screen>
-      <View style={styles.loginContainer}>
+      <View style={styles.registerCountainer}>
         <Image
           source={require('../assets/images/logo.png')}
+          alt="Logo"
           style={styles.logo}
         />
         <View style={styles.inputContainer}>
-          <AppText title={'Login'} fontSize={40} fontWeight="bold" />
-
+          <AppText
+            title="Register"
+            fontSize={40}
+            fontWeight={fontWeight.bold}
+          />
+          <TextInput
+            placeholder="Your Name"
+            onChange={() => console.log('Email')}
+            IconComponent={MaterialCommunityIcons}
+            iconName="account"
+          />
           <TextInput
             placeholder="Email"
-            onChange={value => console.log(value)}
+            onChange={() => console.log('Email')}
             IconComponent={MaterialCommunityIcons}
             iconName="email"
-            autoFocus={true}
           />
           <TextInput
             placeholder="Password"
-            onChange={value => console.log('Value : ', value)}
+            onChange={() => console.log('Email')}
             IconComponent={MaterialCommunityIcons}
             iconName="lock"
-            secureTextEntry={true}
           />
-          <AppButton
-            title="Sign In"
-            isLoading={isLoading}
-            loadingText="Signing in"
-            onPress={login}
-          />
+          <AppButton title="Next" onPress={() => console.log('Pressed')} />
         </View>
 
         <View style={styles.accountText}>
-          <AppText title="New on DevArena?" />
+          <AppText title="Already have an account?" />
           <AppText
-            title="Register"
+            title="Login"
             color={colors.blue}
             ml="2"
             onPress={() => console.log('Pressed')}
@@ -58,23 +55,28 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   accountText: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
+
+  gender: {
+    flexDirection: 'row',
+  },
+
   inputContainer: {
     width: '100%',
   },
   logo: {
     aspectRatio: 1.1 / 1.1,
   },
-  loginContainer: {
+  registerCountainer: {
     flex: 1,
     alignItems: 'center',
-    paddingHorizontal: 40,
     justifyContent: 'space-around',
+    paddingHorizontal: 40,
   },
 });
