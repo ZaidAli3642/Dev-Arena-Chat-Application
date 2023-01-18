@@ -1,18 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {NativeBaseProvider} from 'native-base';
-
-import LoginScreen from './app/screens/LoginScreen';
-import RegisterScreen from './app/screens/RegisterScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {AuthNavigator} from './app/navigation';
 
 const App = () => {
   return (
-    <NativeBaseProvider>
-      <RegisterScreen />
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider>
+        <AuthNavigator />
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({});

@@ -11,4 +11,5 @@ export default {
   RobotoRegular: 'Roboto-Regular',
   RobotoThin: 'Roboto-Thin',
   RobotoThinItalic: 'Roboto-ThinItalic',
+  PacificoRegular: 'Pacifico-Regular',
 };

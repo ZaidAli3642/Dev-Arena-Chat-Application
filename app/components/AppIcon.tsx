@@ -9,6 +9,7 @@ interface Props {
   color?: string;
   size?: string | number;
   props?: object;
+  styles?: object;
 }
 
 const AppIcon: React.FC<PropsWithChildren<Props>> = ({
@@ -17,11 +18,13 @@ const AppIcon: React.FC<PropsWithChildren<Props>> = ({
   color = colors.white,
   size = 5,
   props,
+  styles,
 }) => {
   if (!IconComponent) return null;
 
   return (
     <Icon
+      style={[styles]}
       as={<IconComponent name={name} />}
       color={color}
       size={size}

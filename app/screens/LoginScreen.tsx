@@ -1,12 +1,14 @@
-import {Image, StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import {Image, StyleSheet, View, Keyboard} from 'react-native';
+import React, {useCallback, useRef, useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {AppButton, AppText, Screen, TextInput} from '../components';
 import {colors} from '../config';
 
 const LoginScreen = () => {
+  const scrollRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const login = () => {
     setIsLoading(true);
@@ -19,6 +21,7 @@ const LoginScreen = () => {
           source={require('../assets/images/logo.png')}
           style={styles.logo}
         />
+
         <View style={styles.inputContainer}>
           <AppText title={'Login'} fontSize={40} fontWeight="bold" />
 
@@ -27,7 +30,6 @@ const LoginScreen = () => {
             onChange={value => console.log(value)}
             IconComponent={MaterialCommunityIcons}
             iconName="email"
-            autoFocus={true}
           />
           <TextInput
             placeholder="Password"

@@ -30,6 +30,7 @@
 		87FD4AE8955B455B80B41CA4 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 029ECD9120E945C88670CB5B /* Roboto-Bold.ttf */; };
 		92BCFBCB02FD48C4B56A4D4D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A26C7ED254A1A9320AA27 /* MaterialIcons.ttf */; };
 		9701585FA5C24A46A9835E91 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 104D7DFF398B4303934009D0 /* Roboto-ThinItalic.ttf */; };
+		AA4750D97B5F4056BB3ABB5A /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 425CFB2F5F3242AB95749EA4 /* Pacifico-Regular.ttf */; };
 		AED9E64C806945A79326140A /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DA134D12ED14B7B9D32FDAF /* FontAwesome5_Solid.ttf */; };
 		B5956325E1634847ABCF42D7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BA1BA7592CB49AF8F0C25E2 /* SimpleLineIcons.ttf */; };
 		BDA61982DF044092B2146963 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F52A9F8B209A49128AB087EF /* Zocial.ttf */; };
@@ -76,6 +77,7 @@
 		3B4392A12AC88292D35C810B /* Pods-DevArenaChatApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevArenaChatApplication.debug.xcconfig"; path = "Target Support Files/Pods-DevArenaChatApplication/Pods-DevArenaChatApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		3CD334737F8C46A2B8DCE094 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = ../app/assets/icons/Fonts/EvilIcons.ttf; sourceTree = "<group>"; };
 		40C46D4EE6B6413696D06340 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../app/assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		425CFB2F5F3242AB95749EA4 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pacifico-Regular.ttf"; path = "../app/assets/fonts/Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		49676FB8F7C44273BAED8AD7 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../app/assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		56249B604CDA4689B8C75BE6 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../app/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-DevArenaChatApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevArenaChatApplication.release.xcconfig"; path = "Target Support Files/Pods-DevArenaChatApplication/Pods-DevArenaChatApplication.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				6F5474B4FC544E9CBD1DC417 /* Octicons.ttf */,
 				8BA1BA7592CB49AF8F0C25E2 /* SimpleLineIcons.ttf */,
 				F52A9F8B209A49128AB087EF /* Zocial.ttf */,
+				425CFB2F5F3242AB95749EA4 /* Pacifico-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				F673145E22174F1980DC0E16 /* Octicons.ttf in Resources */,
 				B5956325E1634847ABCF42D7 /* SimpleLineIcons.ttf in Resources */,
 				BDA61982DF044092B2146963 /* Zocial.ttf in Resources */,
+				AA4750D97B5F4056BB3ABB5A /* Pacifico-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

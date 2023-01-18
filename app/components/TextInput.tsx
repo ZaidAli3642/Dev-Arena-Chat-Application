@@ -4,7 +4,6 @@ import {Icon, Input} from 'native-base';
 
 import {colors} from '../config';
 import {fonts} from '../utils';
-import AppIcon from './AppIcon';
 
 type TextInputType = React.FC<
   PropsWithChildren<{

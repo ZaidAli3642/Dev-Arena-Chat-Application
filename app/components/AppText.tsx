@@ -2,6 +2,7 @@ import React, {PropsWithChildren} from 'react';
 import {Text} from 'native-base';
 import {colors} from '../config';
 import {fonts} from '../utils';
+import {fonts as customFont} from '../config';
 
 interface Props {
   title: string | number;
@@ -10,6 +11,8 @@ interface Props {
   fontSize?: number;
   ml?: string;
   fontWeight?: string;
+  fontFamily?: string;
+  styles?: object;
 }
 
 const AppText: React.FC<PropsWithChildren<Props>> = ({
@@ -19,9 +22,13 @@ const AppText: React.FC<PropsWithChildren<Props>> = ({
   fontSize = fonts.fontSize(15),
   ml,
   fontWeight = 'normal',
+  fontFamily = customFont.RobotoBlack,
+  styles,
 }) => {
   return (
     <Text
+      style={[styles]}
+      fontFamily={fontFamily}
       onPress={onPress}
       ml={ml}
       fontWeight={fontWeight}

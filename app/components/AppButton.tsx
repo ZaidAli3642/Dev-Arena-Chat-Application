@@ -9,6 +9,7 @@ interface Props {
   isLoading?: boolean;
   onPress: () => any;
   loadingText?: string;
+  backgroundColor?: string;
 }
 
 const AppButton: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const AppButton: React.FC<Props> = ({
   isLoading,
   onPress,
   loadingText,
+  backgroundColor = colors.blue,
 }) => {
   return (
     <Button
@@ -28,7 +30,7 @@ const AppButton: React.FC<Props> = ({
       _loading={{fontSize: 20}}
       isLoadingText={loadingText}
       fontSize={'7xl'}
-      backgroundColor={colors.blue}>
+      backgroundColor={backgroundColor}>
       {title}
     </Button>
   );
@@ -38,6 +40,6 @@ export default AppButton;
 
 const styles = StyleSheet.create({
   button: {
-    marginVertical: 20,
+    marginVertical: 10,
   },
 });
