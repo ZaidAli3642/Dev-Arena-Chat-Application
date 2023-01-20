@@ -1,9 +1,9 @@
-import {ImageBackground, Keyboard, StyleSheet, View} from 'react-native';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {AppButton, AppText} from '../components';
-import {colors, fonts as customFonts} from '../config';
-import {fonts} from '../utils';
-import {routes} from '../routes';
+import {AppButton, AppText} from '../../components';
+import {colors, fonts as customFonts} from '../../config';
+import {fonts} from '../../utils';
+import {routes} from '../../routes';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const WelcomeScreen: React.FC<Props> = ({navigation}) => {
   return (
     <ImageBackground
-      source={require('../assets/images/background-image.jpg')}
+      source={require('../../assets/images/background-image.jpg')}
       style={styles.container}>
       <AppText
         styles={{marginTop: '40%'}}

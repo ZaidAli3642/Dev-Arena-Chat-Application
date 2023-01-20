@@ -1,5 +1,5 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {AppIcon} from '../components';
 import {colors} from '../config';
 import routes from '../routes/routes';
@@ -18,7 +18,7 @@ const AuthNavigator = () => {
           shadowOpacity: 0,
           elevation: 0,
         },
-        headerTitleStyle: {fontSize: 23},
+        headerTitleStyle: {fontSize: 25},
         headerTintColor: colors.white,
         headerBackTitleVisible: false,
         headerLeft: ({onPress}) => {
@@ -43,13 +43,13 @@ const AuthNavigator = () => {
         name={routes.LoginScreen}
         component={LoginScreen}
         options={{
-          title: 'Login Screen',
+          title: 'Login',
         }}
       />
       <Stack.Screen
         name={routes.RegisterScreen}
         component={RegisterScreen}
-        options={{title: 'Register Screen'}}
+        options={{title: 'Register'}}
       />
     </Stack.Navigator>
   );

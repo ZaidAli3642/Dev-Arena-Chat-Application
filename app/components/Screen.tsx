@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Platform, StatusBar} from 'react-native';
 import React, {PropsWithChildren} from 'react';
 import {colors} from '../config';
 

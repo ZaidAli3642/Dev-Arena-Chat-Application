@@ -9,7 +9,7 @@ interface Props {
   onPress?: () => void;
   color?: string;
   fontSize?: number;
-  ml?: string;
+  ml?: string | number;
   fontWeight?: string;
   fontFamily?: string;
   styles?: object;
@@ -22,7 +22,7 @@ const AppText: React.FC<PropsWithChildren<Props>> = ({
   fontSize = fonts.fontSize(15),
   ml,
   fontWeight = 'normal',
-  fontFamily = customFont.RobotoBlack,
+  fontFamily,
   styles,
 }) => {
   return (

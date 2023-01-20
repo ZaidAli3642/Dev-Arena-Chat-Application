@@ -7,4 +7,5 @@ export default {
   blue: '#03A9F1',
   tomato: 'tomato',
   purple: '#2c306f',
+  grey: '#565E70',
 };

@@ -7,9 +7,9 @@ import {
   Platform,
 } from 'react-native';
 import React from 'react';
-import {AppButton, AppText, TextInput} from '../components';
+import {AppButton, AppText, TextInput} from '../../components';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {colors, fontWeight} from '../config';
+import {colors, fontWeight} from '../../config';
 
 const RegisterScreen = () => {
   return (
@@ -19,7 +19,7 @@ const RegisterScreen = () => {
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View style={styles.registerCountainer}>
           <Image
-            source={require('../assets/images/logo.png')}
+            source={require('../../assets/images/logo.png')}
             style={styles.logo}
           />
 

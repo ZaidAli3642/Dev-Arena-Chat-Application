@@ -10,6 +10,7 @@ interface Props {
   onPress: () => any;
   loadingText?: string;
   backgroundColor?: string;
+  width?: number | string;
 }
 
 const AppButton: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const AppButton: React.FC<Props> = ({
   onPress,
   loadingText,
   backgroundColor = colors.blue,
+  width = '100%',
 }) => {
   return (
     <Button
@@ -25,7 +27,7 @@ const AppButton: React.FC<Props> = ({
       variant={'solid'}
       onPress={onPress}
       _text={{fontSize: fonts.fontSize(16), fontWeight: 'bold'}}
-      w="100%"
+      w={width}
       isLoading={isLoading}
       _loading={{fontSize: 20}}
       isLoadingText={loadingText}

@@ -1,9 +1,9 @@
 import {Image, StyleSheet, View, Keyboard} from 'react-native';
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {AppButton, AppText, Screen, TextInput} from '../components';
-import {colors} from '../config';
+import {AppButton, AppText, Screen, TextInput} from '../../components';
+import {colors} from '../../config';
 
 const LoginScreen = () => {
   const scrollRef = useRef(null);
@@ -18,7 +18,7 @@ const LoginScreen = () => {
     <Screen>
       <View style={styles.loginContainer}>
         <Image
-          source={require('../assets/images/logo.png')}
+          source={require('../../assets/images/logo.png')}
           style={styles.logo}
         />
 
