@@ -10,6 +10,7 @@ interface Props {
   name: string;
   color?: string;
   size?: string | number;
+  backgroundColor?: string;
 }
 
 const IconButton: React.FC<PropsWithChildren<Props>> = ({
@@ -17,10 +18,11 @@ const IconButton: React.FC<PropsWithChildren<Props>> = ({
   name,
   color = colors.white,
   size = 5,
+  backgroundColor = colors.blue,
 }) => {
   return (
     <NativeIconButton
-      style={styles.button}
+      style={[styles.button, {backgroundColor: backgroundColor}]}
       rounded="lg"
       icon={
         <AppIcon
@@ -38,7 +40,6 @@ export default IconButton;
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.blue,
     width: 40,
     height: 40,
     marginLeft: 20,

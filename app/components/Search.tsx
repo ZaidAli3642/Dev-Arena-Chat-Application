@@ -60,7 +60,6 @@ const Search: TextInputType = ({
           </View>
         </TouchableWithoutFeedback>
       }
-      secureTextEntry={secureTextEntry}
     />
   );
 };

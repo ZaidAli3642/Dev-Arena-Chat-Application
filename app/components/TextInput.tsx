@@ -1,9 +1,10 @@
-import {StyleSheet} from 'react-native';
-import React, {PropsWithChildren} from 'react';
+import {StyleSheet, View} from 'react-native';
+import React, {PropsWithChildren, useState} from 'react';
 import {Icon, Input} from 'native-base';
 
 import {colors} from '../config';
 import {fonts} from '../utils';
+import AppIcon from './AppIcon';
 
 type TextInputType = React.FC<
   PropsWithChildren<{
@@ -17,6 +18,9 @@ type TextInputType = React.FC<
     iconColor?: string;
     iconSize?: string | number;
     autoFocus?: boolean;
+    flex?: number;
+    InputRightIcon?: React.FC<PropsWithChildren<{name?: string}>> | any;
+    onLayout?: (event: object) => any;
   }>
 >;
 
@@ -31,11 +35,15 @@ const TextInput: TextInputType = ({
   iconColor = colors.white,
   iconSize = 5,
   autoFocus = false,
+  flex,
+  InputRightIcon,
+  onLayout,
 }) => {
   return (
     <Input
+      flex={flex}
       placeholder={placeholder}
-      style={styles.input}
+      style={[styles.input, {maxHeight: 100}]}
       backgroundColor={colors.lightBlack}
       letterSpacing={1}
       borderTopWidth="0"
@@ -45,9 +53,10 @@ const TextInput: TextInputType = ({
       autoCapitalize="none"
       rounded={'xl'}
       autoCorrect={false}
-      autoFocus={autoFocus}
-      maxHeight={maxHeight}
       multiline={multiline}
+      maxHeight={maxHeight}
+      autoFocus={autoFocus}
+      padding={4}
       onChangeText={value => onChange(value)}
       _input={{
         cursorColor: colors.white,
@@ -55,6 +64,18 @@ const TextInput: TextInputType = ({
       }}
       marginTop={2}
       marginBottom={2}
+      // InputRightElement={
+      //   <View
+      //     style={{
+      //       justifyContent: 'center',
+      //       alignItems: 'center',
+      //       alignSelf: 'center',
+      //       width: 50,
+      //       height: 50,
+      //     }}>
+      //     <AppIcon IconComponent={InputRightIcon} name={iconName} />
+      //   </View>
+      // }
       InputLeftElement={
         IconComponent && (
           <Icon
@@ -78,6 +99,5 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingRight: 10,
     paddingLeft: 10,
-    aspectRatio: 1 / 0.17,
   },
 });

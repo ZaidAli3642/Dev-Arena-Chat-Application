@@ -25,6 +25,7 @@ const ChatRooms: React.FC<PropsWithChildren<Props>> = ({chatRoomsList}) => {
         horizontal>
         {chatRoomsList.map(chats => (
           <FeatureCard
+            key={chats.id}
             styles={{marginHorizontal: 5}}
             imageSource={chats.imageSource}
           />
