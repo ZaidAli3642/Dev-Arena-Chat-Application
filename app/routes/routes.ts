@@ -4,4 +4,5 @@ export default {
   RegisterScreen: 'RegisterScreen',
   MessagesScreen: 'MessagesScreen',
   ChatScreen: 'ChatScreen',
+  InfoScreen: 'InfoScreen',
 };

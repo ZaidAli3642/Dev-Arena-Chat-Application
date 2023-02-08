@@ -85,5 +85,12 @@
 		<string>Roboto-ThinItalic.ttf</string>
 		<string>Pacifico-Regular.ttf</string>
 	</array>
+
+
+
+	<key>NSPhotoLibraryUsageDescription</key>
+  	<string>Photo library usage</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+  	<string>Photo library add usage</string>
 </dict>
 </plist>

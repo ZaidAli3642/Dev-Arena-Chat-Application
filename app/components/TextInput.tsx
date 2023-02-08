@@ -21,6 +21,9 @@ type TextInputType = React.FC<
     flex?: number;
     InputRightIcon?: React.FC<PropsWithChildren<{name?: string}>> | any;
     onLayout?: (event: object) => any;
+    style?: object;
+    marginTop?: number;
+    marginBottom?: number;
   }>
 >;
 
@@ -36,8 +39,8 @@ const TextInput: TextInputType = ({
   iconSize = 5,
   autoFocus = false,
   flex,
-  InputRightIcon,
-  onLayout,
+  marginTop = 2,
+  marginBottom = 2,
 }) => {
   return (
     <Input
@@ -62,27 +65,15 @@ const TextInput: TextInputType = ({
         cursorColor: colors.white,
         selectionColor: colors.white,
       }}
-      marginTop={2}
-      marginBottom={2}
-      // InputRightElement={
-      //   <View
-      //     style={{
-      //       justifyContent: 'center',
-      //       alignItems: 'center',
-      //       alignSelf: 'center',
-      //       width: 50,
-      //       height: 50,
-      //     }}>
-      //     <AppIcon IconComponent={InputRightIcon} name={iconName} />
-      //   </View>
-      // }
+      marginTop={marginTop}
+      marginBottom={marginBottom}
       InputLeftElement={
         IconComponent && (
           <Icon
             as={IconComponent && <IconComponent name={iconName} />}
             size={iconSize}
             color={iconColor}
-            ml={2}
+            ml={3}
           />
         )
       }

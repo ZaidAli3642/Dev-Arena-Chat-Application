@@ -3,7 +3,12 @@ import {TouchableOpacity} from 'react-native';
 import {AppIcon} from '../components';
 import {colors} from '../config';
 import routes from '../routes/routes';
-import {LoginScreen, WelcomeScreen, RegisterScreen} from '../screens';
+import {
+  LoginScreen,
+  WelcomeScreen,
+  RegisterScreen,
+  InfoScreen,
+} from '../screens';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Stack = createStackNavigator();
@@ -46,6 +51,14 @@ const AuthNavigator = () => {
           title: 'Login',
         }}
       />
+      <Stack.Screen
+        name={routes.InfoScreen}
+        component={InfoScreen}
+        options={{
+          title: 'Profile Info',
+        }}
+      />
+
       <Stack.Screen
         name={routes.RegisterScreen}
         component={RegisterScreen}

@@ -9,3 +9,4 @@ export {default as AppIconButton} from './IconButton';
 export {default as FeatureCard} from './FeatureCard';
 export {default as Seperator} from './Seperator';
 export {default as Header} from './Header';
+export {default as AppImageModal} from './AppImageModal';
