@@ -1,4 +1,5 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
+
 import {
   register,
   login,
@@ -13,6 +14,13 @@ import jwtDecode from 'jwt-decode';
 import {navigation} from '../../../navigation/RootNavigation';
 import {routes} from '../../../routes';
 import handleErrors from '../../../utils/errors';
+
+interface UserInterface {
+  _id: string;
+  username: string;
+  email: string;
+  name: string;
+}
 
 function* registerUserSaga(action: any): any {
   try {
@@ -50,13 +58,17 @@ function* loginSaga(action: any): any {
     const response: any = yield call(authApi().login, action.payload.userInfo);
 
     const token = response.headers['x-auth-token'];
-    const user = jwtDecode(token);
+    const user: UserInterface = jwtDecode(token);
 
     yield put(setToken({token}));
     yield put(setUser({userInfo: user}));
 
     yield put(success({}));
     yield put(reject({error: null}));
+
+    if (user && !user.name) {
+      navigation.navigate(routes.InfoScreen);
+    }
   } catch (error) {
     const message = handleErrors(error);
 
