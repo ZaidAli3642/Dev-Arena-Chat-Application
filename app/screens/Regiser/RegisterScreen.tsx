@@ -7,27 +7,31 @@ import {
   Platform,
 } from 'react-native';
 import React, {useState} from 'react';
-import {AppButton, AppText, TextInput} from '../../components';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import {AppButton, AppText, TextInput} from '../../components';
 import {colors, fontWeight} from '../../config';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {routes} from '../../routes';
-import {useDispatch} from 'react-redux';
-import {setUser} from '../../redux/reducers/authReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {register} from '../../redux/reducers/authReducer';
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
 }
 
-const RegisterScreen: React.FC<Props> = ({navigation}) => {
+const RegisterScreen: React.FC<Props> = () => {
   const dispatch = useDispatch();
+
+  const error: string = useSelector((state: any) => state.auth.error);
+  const loading: boolean = useSelector((state: any) => state.auth.loading);
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const nextStep = () => {
     dispatch(
-      setUser({
+      register({
         userInfo: {
           username,
           email,
@@ -35,8 +39,6 @@ const RegisterScreen: React.FC<Props> = ({navigation}) => {
         },
       }),
     );
-
-    navigation.navigate(routes.InfoScreen);
   };
 
   return (
@@ -57,6 +59,11 @@ const RegisterScreen: React.FC<Props> = ({navigation}) => {
               fontWeight={fontWeight.bold}
             />
 
+            <AppText
+              title={error}
+              color="#ed3956"
+              fontWeight={fontWeight.medium}
+            />
             <TextInput
               placeholder="Username"
               onChange={text => setUsername(text)}
@@ -76,7 +83,7 @@ const RegisterScreen: React.FC<Props> = ({navigation}) => {
               iconName="lock"
               secureTextEntry={true}
             />
-            <AppButton title="Next" onPress={nextStep} />
+            <AppButton title="Next" onPress={nextStep} isLoading={loading} />
           </View>
 
           <View style={styles.accountText}>

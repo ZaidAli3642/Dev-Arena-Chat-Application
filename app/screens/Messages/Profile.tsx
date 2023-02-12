@@ -1,10 +1,19 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Image} from 'native-base';
+import {Box, HamburgerIcon, Image, Menu, Pressable} from 'native-base';
+import {useDispatch} from 'react-redux';
+
+import {logout as userLogout} from '../../redux/reducers/authReducer';
 import {AppText} from '../../components';
 import {fonts} from '../../utils';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(userLogout({}));
+  };
+
   return (
     <View style={styles.profileContainer}>
       <View style={styles.profile}>
@@ -20,6 +29,21 @@ const Profile = () => {
           fontSize={fonts.fontSize(20)}
         />
       </View>
+      <Box w={'85%'} alignItems="center">
+        <Menu
+          w={'150'}
+          trigger={triggerProps => {
+            return (
+              <Pressable
+                accessibilityLabel="More options menu"
+                {...triggerProps}>
+                <HamburgerIcon size="6" />
+              </Pressable>
+            );
+          }}>
+          <Menu.Item onPress={logout}>Logout</Menu.Item>
+        </Menu>
+      </Box>
     </View>
   );
 };
@@ -36,7 +60,8 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     paddingLeft: 10,
-    alignItems: 'flex-end',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   profileImage: {
     width: 45,

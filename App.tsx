@@ -1,22 +1,23 @@
 import React from 'react';
-import {NativeBaseProvider} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
-import {AuthNavigator} from './app/navigation';
 import {Provider} from 'react-redux';
-import configureStore from './app/redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
-const store = configureStore();
+import configureStore from './app/redux/store';
+import Root from './app/Root';
+import {navigation} from './app/navigation/RootNavigation';
+
+const {store, persistedStore} = configureStore();
 
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <NativeBaseProvider>
-          <AuthNavigator />
-        </NativeBaseProvider>
-      </NavigationContainer>
+      <PersistGate loading={null} persistor={persistedStore}>
+        <NavigationContainer ref={navigation}>
+          <Root />
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 };
-
 export default App;

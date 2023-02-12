@@ -26,18 +26,20 @@ const AuthNavigator = () => {
         headerTitleStyle: {fontSize: 25},
         headerTintColor: colors.white,
         headerBackTitleVisible: false,
-        headerLeft: ({onPress}) => {
-          return (
-            <TouchableOpacity onPress={onPress}>
-              <AppIcon
-                IconComponent={AntDesign}
-                name="left"
-                size={7}
-                styles={{marginLeft: 10}}
-              />
-            </TouchableOpacity>
-          );
-        },
+        headerLeft: () => null,
+
+        // headerLeft: ({onPress}) => {
+        //   return (
+        //     <TouchableOpacity onPress={onPress}>
+        //       <AppIcon
+        //         IconComponent={AntDesign}
+        //         name="left"
+        //         size={7}
+        //         styles={{marginLeft: 10}}
+        //       />
+        //     </TouchableOpacity>
+        //   );
+        // },
       }}>
       <Stack.Screen
         name={routes.WelcomeScreen}

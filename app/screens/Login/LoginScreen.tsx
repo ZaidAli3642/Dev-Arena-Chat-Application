@@ -1,17 +1,31 @@
-import {Image, StyleSheet, View, Keyboard} from 'react-native';
-import React, {useRef, useState} from 'react';
+import {Image, StyleSheet, View} from 'react-native';
+import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {AppButton, AppText, Screen, TextInput} from '../../components';
+import {useDispatch, useSelector} from 'react-redux';
+
 import {colors} from '../../config';
+import {login as userLogin} from '../../redux/reducers/authReducer';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const LoginScreen = () => {
-  const scrollRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const dispatch = useDispatch();
+  const loading = useSelector((state: any) => state.auth.loading);
+  const error = useSelector((state: any) => state.auth.error);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const login = () => {
-    setIsLoading(true);
+    dispatch(
+      userLogin({
+        userInfo: {
+          email,
+          password,
+        },
+      }),
+    );
   };
 
   return (
@@ -24,26 +38,22 @@ const LoginScreen = () => {
 
         <View style={styles.inputContainer}>
           <AppText title={'Login'} fontSize={40} fontWeight="bold" />
+          <ErrorMessage message={error} />
 
           <TextInput
             placeholder="Email"
-            onChange={value => console.log(value)}
+            onChange={text => setEmail(text)}
             IconComponent={MaterialCommunityIcons}
             iconName="email"
           />
           <TextInput
             placeholder="Password"
-            onChange={value => console.log('Value : ', value)}
+            onChange={text => setPassword(text)}
             IconComponent={MaterialCommunityIcons}
             iconName="lock"
             secureTextEntry={true}
           />
-          <AppButton
-            title="Sign In"
-            isLoading={isLoading}
-            loadingText="Signing in"
-            onPress={login}
-          />
+          <AppButton title="Sign In" onPress={login} isLoading={loading} />
         </View>
 
         <View style={styles.accountText}>

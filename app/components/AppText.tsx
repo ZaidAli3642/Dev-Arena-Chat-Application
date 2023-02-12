@@ -2,7 +2,6 @@ import React, {PropsWithChildren} from 'react';
 import {Text} from 'native-base';
 import {colors} from '../config';
 import {fonts} from '../utils';
-import {fonts as customFont} from '../config';
 
 interface Props {
   title: string | number;

@@ -2,17 +2,18 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import {
-  AppButton,
-  AppImageModal,
-  AppText,
-  Screen,
-  TextInput,
-} from '../../components';
+import {AppButton, AppImageModal, Screen, TextInput} from '../../components';
 import Image from './Image';
 import {useDispatch, useSelector} from 'react-redux';
-import {imageModalVisibled, setUser} from '../../redux/reducers/authReducer';
+import {
+  imageModalVisibled,
+  register,
+  setUser,
+  success,
+  userUpdate,
+} from '../../redux/reducers/authReducer';
 import {openImageLibrary, openPicker} from '../../utils';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const InfoScreen = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,8 @@ const InfoScreen = () => {
   const [name, setName] = useState('');
 
   const imageModal = useSelector(state => state.auth.imageModal);
-  const userInfo = useSelector(state => state.auth.userInfo);
+  const error = useSelector(state => state.auth.error);
+  const user = useSelector(state => state.auth.userInfo);
 
   const visibleImageModal = () =>
     dispatch(imageModalVisibled({imageModal: !imageModal}));
@@ -30,11 +32,10 @@ const InfoScreen = () => {
     if (result) {
       const result = await openPicker();
 
-      setImage(result);
       dispatch(
         setUser({
           userInfo: {
-            ...userInfo,
+            ...user,
             image: result,
           },
         }),
@@ -45,10 +46,9 @@ const InfoScreen = () => {
 
   const registerUser = () => {
     dispatch(
-      setUser({
+      userUpdate({
+        userId: user?._id,
         userInfo: {
-          ...userInfo,
-          image,
           name,
         },
       }),
@@ -61,14 +61,16 @@ const InfoScreen = () => {
         <View style={styles.infoContainer}>
           <Image handleSelectImage={visibleImageModal} />
 
-          <TextInput
-            autoFocus={true}
-            marginTop={10}
-            placeholder="Full Name"
-            onChange={text => setName(text)}
-            IconComponent={MaterialIcons}
-            iconName="person"
-          />
+          <View style={{width: '100%', marginTop: 25}}>
+            <ErrorMessage message={error} />
+            <TextInput
+              autoFocus={true}
+              placeholder="Full Name"
+              onChange={text => setName(text)}
+              IconComponent={MaterialIcons}
+              iconName="person"
+            />
+          </View>
           <AppButton onPress={registerUser} title="Next" />
           <AppImageModal
             isVisible={imageModal}

@@ -7,6 +7,7 @@ const initialState = {
   success: false,
   error: null,
   imageModal: false,
+  calling: false,
 };
 
 const authSlice = createSlice({
@@ -15,6 +16,9 @@ const authSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.userInfo = action.payload.userInfo;
+    },
+    setToken: (state, action) => {
+      state.token = action.payload.token;
     },
     imageModalVisibled: (state, action) => {
       state.imageModal = action.payload.imageModal;
@@ -30,9 +34,32 @@ const authSlice = createSlice({
       state.error = action.payload.error;
       state.loading = false;
     },
+    login: (state, payload) => {
+      state.calling = true;
+    },
+    register: (state, payload) => {
+      state.calling = true;
+    },
+    userUpdate: (state, action) => {
+      state.calling = true;
+    },
+    logout: (state, action) => {
+      state.userInfo = null;
+      state.token = null;
+    },
   },
 });
 
 export default authSlice.reducer;
-export const {pending, reject, success, imageModalVisibled, setUser} =
-  authSlice.actions;
+export const {
+  pending,
+  reject,
+  success,
+  imageModalVisibled,
+  setUser,
+  register,
+  login,
+  setToken,
+  userUpdate,
+  logout,
+} = authSlice.actions;

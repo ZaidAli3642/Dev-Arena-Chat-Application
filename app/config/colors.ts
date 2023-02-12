@@ -11,4 +11,5 @@ export default {
   lowBlack: '#373E4E',
   purple: '#837DFF',
   green: '#00AC83',
+  danger: '#ed3956',
 };
