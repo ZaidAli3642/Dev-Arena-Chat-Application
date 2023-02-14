@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import AppNavigator from './navigation/AppNavigator';
 
 const Root = () => {
-  const userInfo = useSelector(state => state.auth.userInfo);
+  const userInfo = useSelector((state: any) => state.auth.userInfo);
 
   return (
     <NativeBaseProvider>

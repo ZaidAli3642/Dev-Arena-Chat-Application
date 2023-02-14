@@ -10,29 +10,35 @@ import AppIcon from './AppIcon';
 type TextInputType = React.FC<
   PropsWithChildren<{
     placeholder?: string;
-    secureTextEntry?: boolean;
     maxHeight?: number;
     multiline?: boolean;
     onChange: (value: any) => void;
     onSearch: () => void;
+    flex?: number;
+    marginLeft?: number;
+    marginRight?: number;
   }>
 >;
 
 const Search: TextInputType = ({
   placeholder,
-  secureTextEntry = false,
   onChange,
   onSearch,
+  flex,
+  marginLeft,
+  marginRight,
 }) => {
   return (
     <Input
-      flex={1}
+      flex={flex}
       rounded={'xl'}
       placeholder={placeholder}
       style={styles.input}
       backgroundColor={colors.lightBlack}
       letterSpacing={1}
       height={45}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
       borderTopWidth="0"
       borderBottomWidth="0"
       borderLeftWidth="0"

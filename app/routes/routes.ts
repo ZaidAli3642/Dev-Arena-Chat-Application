@@ -5,4 +5,5 @@ export default {
   MessagesScreen: 'MessagesScreen',
   ChatScreen: 'ChatScreen',
   InfoScreen: 'InfoScreen',
+  SearchUserScreen: 'SearchUserScreen',
 };
