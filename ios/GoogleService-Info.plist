@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>206611637757-p5i29uesqsgehrtn2i1dunrubg9n6mhp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.206611637757-p5i29uesqsgehrtn2i1dunrubg9n6mhp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAG-OWjiby9YGizTktkmyN_Ui0e1KEd7-Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>206611637757</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.devarenachatapplication</string>
+	<key>PROJECT_ID</key>
+	<string>devarena-36ad1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>devarena-36ad1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:206611637757:ios:f5059f2e53af4a47732594</string>
+</dict>
+</plist>

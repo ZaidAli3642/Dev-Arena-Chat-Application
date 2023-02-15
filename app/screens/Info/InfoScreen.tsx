@@ -20,9 +20,10 @@ const InfoScreen = () => {
   const [image, setImage] = useState<object>();
   const [name, setName] = useState('');
 
-  const imageModal = useSelector(state => state.auth.imageModal);
-  const error = useSelector(state => state.auth.error);
-  const user = useSelector(state => state.auth.userInfo);
+  const imageModal = useSelector((state: any) => state.auth.imageModal);
+  const error = useSelector((state: any) => state.auth.error);
+  const user = useSelector((state: any) => state.auth.userInfo);
+  const loading = useSelector((state: any) => state.auth.loading);
 
   const visibleImageModal = () =>
     dispatch(imageModalVisibled({imageModal: !imageModal}));
@@ -71,7 +72,7 @@ const InfoScreen = () => {
               iconName="person"
             />
           </View>
-          <AppButton onPress={registerUser} title="Next" />
+          <AppButton onPress={registerUser} title="Next" isLoading={loading} />
           <AppImageModal
             isVisible={imageModal}
             openLibrary={openImagePicker}

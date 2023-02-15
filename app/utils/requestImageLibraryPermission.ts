@@ -6,7 +6,7 @@ const requestPermission = async () => {
     return await Permission.request(Permission.PERMISSIONS.IOS.PHOTO_LIBRARY);
 
   return await Permission.request(
-    Permission.PERMISSIONS.ANDROID.READ_MEDIA_IMAGES,
+    Permission.PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
   );
 };
 

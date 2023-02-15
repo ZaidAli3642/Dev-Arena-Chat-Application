@@ -29,17 +29,6 @@ const AppImageModal: React.FC<PropsWithChildren<Props>> = ({
   return (
     <Modal isVisible={isVisible} style={styles.imageModal}>
       <View style={styles.imageMenu}>
-        {/* <TouchableOpacity
-          style={styles.imageMenuItem}
-          activeOpacity={0.7}
-          onPress={openCamera}>
-          <AppText
-            title="Open Camera"
-            fontSize={22}
-            styles={{letterSpacing: 1}}
-            color={colors.lowBlack}
-          />
-        </TouchableOpacity> */}
         <TouchableOpacity
           style={styles.imageMenuItem}
           activeOpacity={0.7}

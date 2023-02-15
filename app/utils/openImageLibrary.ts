@@ -1,11 +1,18 @@
-import {Alert} from 'react-native';
+import {Alert, Platform} from 'react-native';
 import Permission from 'react-native-permissions';
 import requestImageLibraryPermission from './requestImageLibraryPermission';
 
-const openImageLibrary = async () => {
-  const result = await Permission.check(
-    Permission.PERMISSIONS.IOS.PHOTO_LIBRARY,
+const permissionCheckForLibrary = async () => {
+  if (Platform.OS === 'ios')
+    return await Permission.check(Permission.PERMISSIONS.IOS.PHOTO_LIBRARY);
+
+  return await Permission.check(
+    Permission.PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE,
   );
+};
+
+const openImageLibrary = async () => {
+  const result = await permissionCheckForLibrary();
 
   switch (result) {
     case Permission.RESULTS.UNAVAILABLE:

@@ -29,21 +29,16 @@ const Profile = () => {
           fontSize={fonts.fontSize(20)}
         />
       </View>
-      <Box w={'85%'} alignItems="center">
-        <Menu
-          w={'150'}
-          trigger={triggerProps => {
-            return (
-              <Pressable
-                accessibilityLabel="More options menu"
-                {...triggerProps}>
-                <HamburgerIcon size="6" />
-              </Pressable>
-            );
-          }}>
-          <Menu.Item onPress={logout}>Logout</Menu.Item>
-        </Menu>
-      </Box>
+      <Menu
+        trigger={triggerProps => {
+          return (
+            <Pressable accessibilityLabel="More options menu" {...triggerProps}>
+              <HamburgerIcon size="6" />
+            </Pressable>
+          );
+        }}>
+        <Menu.Item onPress={logout}>Logout</Menu.Item>
+      </Menu>
     </View>
   );
 };
@@ -57,7 +52,6 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     marginHorizontal: 25,
-    width: '100%',
     flexDirection: 'row',
     paddingLeft: 10,
     alignItems: 'center',
