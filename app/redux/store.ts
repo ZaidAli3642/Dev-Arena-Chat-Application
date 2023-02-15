@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
-import createDebugger from 'redux-flipper';
+// import createDebugger from 'redux-flipper';
 import reducer from './reducer';
 import {persistStore, persistReducer} from 'redux-persist';
 
@@ -22,7 +22,7 @@ export default function () {
     middleware: getDefaultMiddleware => [
       ...getDefaultMiddleware({serializableCheck: false}),
       sagaMiddleware,
-      createDebugger(),
+      // createDebugger(),
     ],
   });
 

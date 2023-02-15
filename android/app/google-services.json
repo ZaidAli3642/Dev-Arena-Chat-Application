@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "206611637757",
+    "project_id": "devarena-36ad1",
+    "storage_bucket": "devarena-36ad1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206611637757:android:ea39608101b68b09732594",
+        "android_client_info": {
+          "package_name": "com.devarenachatapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206611637757-bp2md0llpekb9m5fgjvni9ucubbd2cgg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBows15-9F2mwVkawsG8nXmjctHEdP4HGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206611637757-bp2md0llpekb9m5fgjvni9ucubbd2cgg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "206611637757-p5i29uesqsgehrtn2i1dunrubg9n6mhp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.devarenachatapplication"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
