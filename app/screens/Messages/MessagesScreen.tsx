@@ -8,6 +8,7 @@ import ChatRooms from './ChatRooms';
 import ListItem from '../../components/ListItem';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {routes} from '../../routes';
+import {useSelector} from 'react-redux';
 
 interface Props {
   navigation: StackNavigationProp<any, any>;
@@ -73,12 +74,14 @@ const MessagesScreen: React.FC<PropsWithChildren<Props>> = ({navigation}) => {
     },
   ];
 
+  const user = useSelector((state: any) => state.auth.userInfo);
+
   return (
     <Screen>
       <FlatList
         ListHeaderComponent={() => (
           <View style={{paddingVertical: 20}}>
-            <Profile />
+            <Profile name={user.name} imageUri={user.imageUri} />
             <Search navigation={navigation} />
             <ChatRooms chatRoomsList={chatRoomsList} />
           </View>
@@ -90,6 +93,9 @@ const MessagesScreen: React.FC<PropsWithChildren<Props>> = ({navigation}) => {
             onPress={() => navigation.navigate(routes.ChatScreen)}
             messagesUnreadCount={item.messagesUnreadCount}
             imageUri={item.imageSource}
+            title={'Zaid Saleem'}
+            subtitle="last message"
+            date="Tue"
           />
         )}
         ItemSeparatorComponent={Seperator}

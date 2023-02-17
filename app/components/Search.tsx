@@ -6,6 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../config';
 import {fonts} from '../utils';
 import AppIcon from './AppIcon';
+import ErrorMessage from './ErrorMessage';
 
 type TextInputType = React.FC<
   PropsWithChildren<{
@@ -17,6 +18,7 @@ type TextInputType = React.FC<
     flex?: number;
     marginLeft?: number;
     marginRight?: number;
+    error?: string;
   }>
 >;
 

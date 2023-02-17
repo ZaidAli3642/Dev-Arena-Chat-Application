@@ -11,13 +11,13 @@ interface Props {
 }
 
 const Image: React.FC<PropsWithChildren<Props>> = ({handleSelectImage}) => {
-  const userInfo = useSelector(state => state.auth.userInfo);
+  const userInfo = useSelector((state: any) => state.auth.userInfo);
 
-  if (userInfo && userInfo.image)
+  if (userInfo && userInfo.imageUri)
     return (
       <View style={styles.image}>
         <NativeImage
-          source={{uri: userInfo.image.uri}}
+          source={{uri: userInfo.imageUri}}
           alt={'profile image'}
           width={'100%'}
           height={'100%'}

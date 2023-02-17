@@ -1,7 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React, {PropsWithChildren} from 'react';
+import React, {PropsWithChildren, useState} from 'react';
 import {Header, Search} from '../../components';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {search as searchCall} from '../../redux/reducers/usersReducer';
 
 interface Props {
   headerProps: object;
@@ -10,6 +12,13 @@ interface Props {
 const SearchUserScreenHeader: React.FC<PropsWithChildren<Props>> = ({
   headerProps,
 }) => {
+  const [search, setSearch] = useState('');
+  const dispatch = useDispatch();
+
+  const searchUser = () => {
+    dispatch(searchCall({search}));
+  };
+
   const navigation = useNavigation();
 
   return (
@@ -19,8 +28,8 @@ const SearchUserScreenHeader: React.FC<PropsWithChildren<Props>> = ({
         marginLeft={2}
         flex={1}
         placeholder="Search..."
-        onSearch={() => console.log('Search')}
-        onChange={value => console.log('Value : ', value)}
+        onSearch={searchUser}
+        onChange={value => setSearch(value)}
       />
     </Header>
   );

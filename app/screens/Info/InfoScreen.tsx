@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -7,9 +7,7 @@ import Image from './Image';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   imageModalVisibled,
-  register,
-  setUser,
-  success,
+  imageUpload,
   userUpdate,
 } from '../../redux/reducers/authReducer';
 import {openImageLibrary, openPicker} from '../../utils';
@@ -17,7 +15,6 @@ import ErrorMessage from '../../components/ErrorMessage';
 
 const InfoScreen = () => {
   const dispatch = useDispatch();
-  const [image, setImage] = useState<object>();
   const [name, setName] = useState('');
 
   const imageModal = useSelector((state: any) => state.auth.imageModal);
@@ -34,13 +31,15 @@ const InfoScreen = () => {
       const result = await openPicker();
 
       dispatch(
-        setUser({
+        imageUpload({
+          userId: user?._id,
           userInfo: {
-            ...user,
-            image: result,
+            filename: result?.fileName,
+            fileUri: result?.uri,
           },
         }),
       );
+
       dispatch(imageModalVisibled({imageModal: false}));
     }
   };

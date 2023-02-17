@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
-// import createDebugger from 'redux-flipper';
 import reducer from './reducer';
 import {persistStore, persistReducer} from 'redux-persist';
+import Reactotron from '../../ReactotronConfig';
 
 import createSagaMiddleware from 'redux-saga';
 import {rootSagas} from './sagas/root/rootSagas';
@@ -22,8 +22,9 @@ export default function () {
     middleware: getDefaultMiddleware => [
       ...getDefaultMiddleware({serializableCheck: false}),
       sagaMiddleware,
-      // createDebugger(),
     ],
+
+    enhancers: [Reactotron.createEnhancer!()],
   });
 
   sagaMiddleware.run(rootSagas);

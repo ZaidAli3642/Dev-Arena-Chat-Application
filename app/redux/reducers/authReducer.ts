@@ -43,6 +43,9 @@ const authSlice = createSlice({
     userUpdate: (state, action) => {
       state.calling = true;
     },
+    imageUpload: (state, action) => {
+      state.calling = true;
+    },
     logout: (state, action) => {
       state.userInfo = null;
       state.token = null;
@@ -62,4 +65,5 @@ export const {
   setToken,
   userUpdate,
   logout,
+  imageUpload,
 } = authSlice.actions;

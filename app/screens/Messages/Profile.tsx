@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import {Box, HamburgerIcon, Image, Menu, Pressable} from 'native-base';
 import {useDispatch} from 'react-redux';
 
@@ -7,7 +7,12 @@ import {logout as userLogout} from '../../redux/reducers/authReducer';
 import {AppText} from '../../components';
 import {fonts} from '../../utils';
 
-const Profile = () => {
+interface Props {
+  name: string;
+  imageUri: string;
+}
+
+const Profile: React.FC<PropsWithChildren<Props>> = ({name, imageUri}) => {
   const dispatch = useDispatch();
 
   const logout = () => {
@@ -18,13 +23,14 @@ const Profile = () => {
     <View style={styles.profileContainer}>
       <View style={styles.profile}>
         <Image
-          source={require('../../assets/images/profile-image.jpg')}
+          source={{uri: imageUri}}
+          defaultSource={require('../../assets/images/profile-avatar.jpg')}
           alt="Profile"
           style={styles.profileImage}
           rounded="full"
         />
         <AppText
-          title="Zaid Saleem"
+          title={name}
           styles={{marginLeft: 20}}
           fontSize={fonts.fontSize(20)}
         />
