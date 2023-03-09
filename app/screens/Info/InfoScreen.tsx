@@ -29,7 +29,6 @@ const InfoScreen = () => {
     const result = await openImageLibrary();
     if (result) {
       const result = await openPicker();
-
       dispatch(
         imageUpload({
           userId: user?._id,

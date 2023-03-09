@@ -54,6 +54,13 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = DevArenaChatApplication;
 		};
+		184EB25929B113AE0084EAA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 184EB25529B113AE0084EAA4 /* RNGeocoder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF8FCF941BFFB184000FCD37;
+			remoteInfo = RNGeocoder;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +80,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DevArenaChatApplication/main.m; sourceTree = "<group>"; };
 		18244297299D3CE100456A1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1824429E299D701F00456A1C /* libRNFBStorage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNFBStorage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		184EB25529B113AE0084EAA4 /* RNGeocoder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGeocoder.xcodeproj; path = "../../node_modules/react-native-geocoder/ios/RNGeocoder.xcodeproj"; sourceTree = "<group>"; };
 		18B599F1607049848B3146F9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = ../app/assets/icons/Fonts/MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		20C4F8B677E945059F5A2210 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = ../app/assets/icons/Fonts/Ionicons.ttf; sourceTree = "<group>"; };
 		2FD9ED4792DEF874093146FA /* Pods_DevArenaChatApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevArenaChatApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +138,7 @@
 		00E356EF1AD99517003FC87E /* DevArenaChatApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
+				184EB25529B113AE0084EAA4 /* RNGeocoder.xcodeproj */,
 				00E356F21AD99517003FC87E /* DevArenaChatApplicationTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
@@ -156,6 +165,14 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = DevArenaChatApplication;
+			sourceTree = "<group>";
+		};
+		184EB25629B113AE0084EAA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				184EB25A29B113AE0084EAA4 /* libRNGeocoder.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -323,6 +340,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 184EB25629B113AE0084EAA4 /* Products */;
+					ProjectRef = 184EB25529B113AE0084EAA4 /* RNGeocoder.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* DevArenaChatApplication */,
@@ -330,6 +353,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		184EB25A29B113AE0084EAA4 /* libRNGeocoder.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGeocoder.a;
+			remoteRef = 184EB25929B113AE0084EAA4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {

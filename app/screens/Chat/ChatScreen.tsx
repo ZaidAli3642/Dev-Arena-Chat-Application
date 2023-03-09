@@ -3,45 +3,62 @@ import {
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
+  TextInput as NativeTextInput,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
-import {AppIconButton, Screen, TextInput} from '../../components';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {AppIconButton, TextInput} from '../../components';
 import Message from './Message';
 import Feather from 'react-native-vector-icons/Feather';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../../config';
+import {useRoute} from '@react-navigation/native';
+import {
+  createConversation,
+  messages as messageCall,
+  setMessages,
+} from '../../redux/reducers/messagesReducers';
+import {socket} from '../../socket/socket';
 
 const ChatScreen = () => {
-  const [sendMessageButtonHide, setSendMessageButtonHide] = useState(false);
+  const [message, setMessage] = useState('');
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const route = useRoute();
+  const inputRef = useRef<NativeTextInput>();
+  const dispatch = useDispatch();
+  const {receiver} = route.params;
 
-  const messages = [
-    {id: 1, message: 'Hi!', sender: true},
-    {id: 2, message: 'Hello!'},
-    {id: 3, message: 'What can I help you?'},
-    {id: 4, message: 'Do you have Biryani?', sender: true},
-    {id: 6, message: 'Yes we have, will send you details about it.'},
-    {id: 7, message: 'Yes we have, will send you details about it.'},
-    {
-      id: 8,
-      message: 'Yes we have, will send you details about it.',
-      sender: true,
-    },
-    {
-      id: 9,
-      message: 'Yes we have, will send you details about it.',
-      sender: true,
-    },
-    {id: 10, message: 'Yes we have, will send you details about it.'},
-    {
-      id: 11,
-      message: 'Yes we have, will send you details about it.',
-      sender: true,
-    },
-    {id: 12, message: 'Yes we have, will send you details about it.'},
-    {id: 13, message: 'Yes we have, will send you details about it.'},
-    {id: 14, message: 'Yes we have, will send you details about it.'},
-  ];
+  const conversation = useSelector((state: any) => state.messages.conversation);
+  const userMessages = useSelector((state: any) => state.messages.messages);
+  const user = useSelector((state: any) => state.auth.userInfo);
+
+  const sendMessage = () => {
+    dispatch(
+      messageCall({
+        message: message,
+        conversationId: conversation._id,
+        senderId: user._id,
+        receiverId: receiver._id,
+      }),
+    );
+    inputRef.current?.clear();
+  };
+
+  useEffect(() => {
+    dispatch(createConversation({receiverId: receiver._id}));
+  }, []);
+
+  useLayoutEffect(() => {
+    socket.on('receive_message', data => {
+      setArrivalMessage(JSON.parse(data));
+    });
+  }, []);
+
+  useEffect(() => {
+    arrivalMessage && dispatch(setMessages([arrivalMessage]));
+    console.log('arrival messasge changed');
+  }, [arrivalMessage]);
 
   return (
     <KeyboardAvoidingView
@@ -49,44 +66,40 @@ const ChatScreen = () => {
       keyboardVerticalOffset={80}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <FlatList
+        inverted={true}
         showsVerticalScrollIndicator={false}
-        data={messages}
-        keyExtractor={Item => Item.id.toString()}
+        data={[...userMessages].reverse()}
+        keyExtractor={item => item._id.toString()}
         renderItem={({item}) => (
           <Message
             messageStyles={{marginHorizontal: 20}}
             message={item.message}
-            sender={item.sender}
+            sender={user._id === item.sender}
           />
         )}
       />
 
-      <View
-        style={{
-          flexDirection: 'row',
-          width: '100%',
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingHorizontal: 20,
-        }}>
+      <View style={styles.messageInput}>
         <TextInput
           flex={1}
           multiline={true}
           placeholder="Write message..."
-          onChange={() => console.log('Changed')}
+          onChange={value => setMessage(value)}
           maxHeight={200}
+          ref={inputRef}
           iconName="search"
         />
         <AppIconButton
           IconComponent={Feather}
           name="message-circle"
           backgroundColor={colors.purple}
+          onPress={sendMessage}
         />
-        <AppIconButton
+        {/* <AppIconButton
           IconComponent={Ionicons}
           name="md-camera"
           backgroundColor={colors.green}
-        />
+        /> */}
       </View>
     </KeyboardAvoidingView>
   );
@@ -94,4 +107,13 @@ const ChatScreen = () => {
 
 export default ChatScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  messageInput: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+});

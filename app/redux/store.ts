@@ -30,5 +30,6 @@ export default function () {
   sagaMiddleware.run(rootSagas);
 
   const persistedStore = persistStore(store);
+
   return {store, persistedStore};
 }

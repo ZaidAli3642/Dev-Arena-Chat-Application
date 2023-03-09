@@ -12,6 +12,7 @@ interface Props {
   size?: string | number;
   backgroundColor?: string;
   onPress: () => void;
+  style?: object;
 }
 
 const IconButton: React.FC<PropsWithChildren<Props>> = ({
@@ -21,11 +22,12 @@ const IconButton: React.FC<PropsWithChildren<Props>> = ({
   size = 5,
   backgroundColor = colors.blue,
   onPress,
+  style,
 }) => {
   return (
     <NativeIconButton
       onPress={onPress}
-      style={[styles.button, {backgroundColor: backgroundColor}]}
+      style={[styles.button, {backgroundColor: backgroundColor}, style]}
       rounded="lg"
       icon={
         <AppIcon

@@ -3,6 +3,7 @@ import React, {PropsWithChildren} from 'react';
 import {Image} from 'native-base';
 import AppText from './AppText';
 import {fonts} from '../utils';
+import AppIcon from './AppIcon';
 
 interface Props {
   onPress?: () => void;
@@ -11,6 +12,8 @@ interface Props {
   title: string;
   subtitle?: string;
   date?: string;
+  IconComponent?: React.FC<PropsWithChildren<{name?: string}>> | any;
+  name?: string;
 }
 
 const ListItem: React.FC<PropsWithChildren<Props>> = ({
@@ -20,9 +23,9 @@ const ListItem: React.FC<PropsWithChildren<Props>> = ({
   title,
   subtitle,
   date,
+  IconComponent,
+  name,
 }) => {
-  // const imageUri =
-  //   'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80';
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View
@@ -32,16 +35,24 @@ const ListItem: React.FC<PropsWithChildren<Props>> = ({
           justifyContent: 'space-between',
           marginVertical: 10,
         }}>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           {!messagesUnreadCount ? (
-            <Image
-              source={{uri: imageUri}}
-              defaultSource={require('../assets/images/profile-avatar.jpg')}
-              alt="Profile-image"
-              rounded="full"
-              width={44}
-              height={44}
-            />
+            <>
+              {imageUri && (
+                <Image
+                  source={{uri: imageUri}}
+                  defaultSource={require('../assets/images/profile-avatar.jpg')}
+                  alt="Profile-image"
+                  rounded="full"
+                  width={44}
+                  height={44}
+                />
+              )}
+
+              {!imageUri && (
+                <AppIcon IconComponent={IconComponent} name={name} size={6} />
+              )}
+            </>
           ) : (
             <View style={{width: 40, height: 45}}>
               <View

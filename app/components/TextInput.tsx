@@ -24,63 +24,70 @@ type TextInputType = React.FC<
     style?: object;
     marginTop?: number;
     marginBottom?: number;
+    ref?: any;
   }>
 >;
 
-const TextInput: TextInputType = ({
-  placeholder,
-  secureTextEntry = false,
-  maxHeight,
-  multiline,
-  onChange,
-  IconComponent,
-  iconName,
-  iconColor = colors.white,
-  iconSize = 5,
-  autoFocus = false,
-  flex,
-  marginTop = 2,
-  marginBottom = 2,
-}) => {
-  return (
-    <Input
-      flex={flex}
-      placeholder={placeholder}
-      style={[styles.input, {maxHeight: 100}]}
-      backgroundColor={colors.lightBlack}
-      letterSpacing={1}
-      borderTopWidth="0"
-      borderBottomWidth="0"
-      borderLeftWidth="0"
-      borderRightWidth="0"
-      autoCapitalize="none"
-      rounded={'xl'}
-      autoCorrect={false}
-      multiline={multiline}
-      maxHeight={maxHeight}
-      autoFocus={autoFocus}
-      padding={4}
-      onChangeText={value => onChange(value)}
-      _input={{
-        cursorColor: colors.white,
-        selectionColor: colors.white,
-      }}
-      marginTop={marginTop}
-      marginBottom={marginBottom}
-      InputLeftElement={
-        IconComponent && (
-          <Icon
-            as={IconComponent && <IconComponent name={iconName} />}
-            size={iconSize}
-            color={iconColor}
-            ml={3}
-          />
-        )
-      }
-      secureTextEntry={secureTextEntry}
-    />
-  );
-};
+const TextInput: TextInputType = React.forwardRef(
+  (
+    {
+      placeholder,
+      secureTextEntry = false,
+      maxHeight,
+      multiline,
+      onChange,
+      IconComponent,
+      iconName,
+      iconColor = colors.white,
+      iconSize = 5,
+      autoFocus = false,
+      flex,
+      marginTop = 2,
+      marginBottom = 2,
+    },
+    ref,
+  ) => {
+    return (
+      <Input
+        ref={ref}
+        flex={flex}
+        placeholder={placeholder}
+        style={[styles.input, {maxHeight: 100}]}
+        backgroundColor={colors.lightBlack}
+        letterSpacing={1}
+        borderTopWidth="0"
+        borderBottomWidth="0"
+        borderLeftWidth="0"
+        borderRightWidth="0"
+        autoCapitalize="none"
+        rounded={'xl'}
+        autoCorrect={false}
+        multiline={multiline}
+        maxHeight={maxHeight}
+        autoFocus={autoFocus}
+        padding={4}
+        onChangeText={value => onChange(value)}
+        _input={{
+          cursorColor: colors.white,
+          selectionColor: colors.white,
+        }}
+        marginTop={marginTop}
+        marginBottom={marginBottom}
+        InputLeftElement={
+          IconComponent && (
+            <Icon
+              as={IconComponent && <IconComponent name={iconName} />}
+              size={iconSize}
+              color={iconColor}
+              ml={3}
+            />
+          )
+        }
+        secureTextEntry={secureTextEntry}
+      />
+    );
+  },
+);
 
 export default TextInput;
 

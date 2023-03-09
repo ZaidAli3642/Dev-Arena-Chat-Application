@@ -8,8 +8,9 @@ function* searchUserSaga(action: any): any {
   const token = yield select(state => state.auth.token);
   try {
     const search = action.payload.search;
+    const userId = action.payload.userId;
 
-    const response = yield call(searchApi(token).searchUser, search);
+    const response = yield call(searchApi(token).searchUser, search, userId);
 
     yield put(searchUsers({users: response.data.users}));
     yield put(reject({error: null}));

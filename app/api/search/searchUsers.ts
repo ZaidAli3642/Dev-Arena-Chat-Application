@@ -8,11 +8,14 @@ export const searchApi = (token: string) => {
   };
 
   return {
-    searchUser: async (search: string) => {
+    searchUser: async (search: string, userId: string) => {
       try {
-        const response = await apiClient.get(`/users/search?search=${search}`, {
-          headers,
-        });
+        const response = await apiClient.get(
+          `/users/search/${userId}?search=${search}`,
+          {
+            headers,
+          },
+        );
 
         return response;
       } catch (error) {

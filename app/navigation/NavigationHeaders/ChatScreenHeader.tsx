@@ -4,6 +4,8 @@ import {AppText, Header} from '../../components';
 import {Image} from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import {fonts, fontWeight} from '../../config';
+import {useDispatch, useSelector} from 'react-redux';
+import {clearMessages} from '../../redux/reducers/messagesReducers';
 
 interface Props {
   headerProps: object;
@@ -12,15 +14,18 @@ interface Props {
 const ChatScreenHeader: React.FC<PropsWithChildren<Props>> = ({
   headerProps,
 }) => {
-  const navigation = useNavigation();
-  const imageSource1 =
-    'https://images.unsplash.com/photo-1595781572981-d63151b232ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80';
+  const dispatch = useDispatch();
+  const {receiver} = headerProps.route.params;
+  const user = useSelector((state: any) => state.auth.userInfo);
 
-  const imageSource2 =
-    'https://images.unsplash.com/photo-1545418776-a37fba72a75d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80';
+  const navigation = useNavigation();
 
   return (
-    <Header onPress={() => navigation.goBack()}>
+    <Header
+      onPress={() => {
+        dispatch(clearMessages({}));
+        navigation.goBack();
+      }}>
       <View style={styles.headerContainer}>
         <View style={{flexDirection: 'row'}}>
           <Image
@@ -28,26 +33,28 @@ const ChatScreenHeader: React.FC<PropsWithChildren<Props>> = ({
             height={45}
             alt={'profile image'}
             rounded="full"
-            source={{uri: imageSource1}}
+            defaultSource={require('../../assets/images/profile-avatar.jpg')}
+            source={{uri: user.imageUri, cache: 'only-if-cached'}}
           />
           <Image
             width={45}
             height={45}
             alt={'profile image'}
             rounded="full"
-            source={{uri: imageSource2}}
+            defaultSource={require('../../assets/images/profile-avatar.jpg')}
+            source={{uri: receiver.imageUri}}
             ml={2}
           />
         </View>
         <View style={{alignItems: 'flex-end'}}>
           <AppText
-            title={'Zaid Saleem'}
+            title={user.name}
             fontFamily={fonts.RobotoRegular}
             fontWeight={fontWeight.normal}
             styles={{letterSpacing: 1}}
           />
           <AppText
-            title={'Zaid Saleem'}
+            title={receiver.name}
             fontFamily={fonts.RobotoRegular}
             fontWeight={fontWeight.normal}
             styles={{letterSpacing: 1}}

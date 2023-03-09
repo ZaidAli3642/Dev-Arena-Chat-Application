@@ -23,8 +23,11 @@ const Profile: React.FC<PropsWithChildren<Props>> = ({name, imageUri}) => {
     <View style={styles.profileContainer}>
       <View style={styles.profile}>
         <Image
-          source={{uri: imageUri}}
-          defaultSource={require('../../assets/images/profile-avatar.jpg')}
+          source={
+            imageUri
+              ? {uri: imageUri}
+              : require('../../assets/images/profile-avatar.jpg')
+          }
           alt="Profile"
           style={styles.profileImage}
           rounded="full"

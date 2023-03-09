@@ -1,5 +1,6 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-
+import {PAUSE, PERSIST, REHYDRATE} from 'redux-persist';
+// import configureStore from '../../store';
 import {
   register,
   login,
@@ -14,6 +15,8 @@ import jwtDecode from 'jwt-decode';
 import {navigation} from '../../../navigation/RootNavigation';
 import {routes} from '../../../routes';
 import handleErrors from '../../../utils/errors';
+
+// const {persistedStore} = configureStore();
 
 interface UserInterface {
   _id: string;

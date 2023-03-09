@@ -6,4 +6,5 @@ export default {
   ChatScreen: 'ChatScreen',
   InfoScreen: 'InfoScreen',
   SearchUserScreen: 'SearchUserScreen',
+  ProfileScreen: 'ProfileScreen',
 };

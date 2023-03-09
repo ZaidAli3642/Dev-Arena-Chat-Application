@@ -24,7 +24,11 @@ const SearchUsersScreen: React.FC<Props> = ({navigation}) => {
         keyExtractor={item => item._id.toString()}
         renderItem={({item}) => (
           <ListItem
-            onPress={() => navigation.navigate(routes.ChatScreen)}
+            onPress={() =>
+              navigation.navigate(routes.ProfileScreen, {
+                user: item,
+              })
+            }
             imageUri={item.imageUri}
             title={item.name}
           />

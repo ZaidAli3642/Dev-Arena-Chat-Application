@@ -1,8 +1,15 @@
-import {Image, StyleSheet, View} from 'react-native';
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {AppButton, AppText, Screen, TextInput} from '../../components';
+import {AppButton, AppText, TextInput} from '../../components';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {colors} from '../../config';
@@ -29,44 +36,48 @@ const LoginScreen = () => {
   };
 
   return (
-    <Screen>
-      <View style={styles.loginContainer}>
-        <Image
-          source={require('../../assets/images/logo.png')}
-          style={styles.logo}
-        />
-
-        <View style={styles.inputContainer}>
-          <AppText title={'Login'} fontSize={40} fontWeight="bold" />
-          <ErrorMessage message={error} />
-
-          <TextInput
-            placeholder="Email"
-            onChange={text => setEmail(text)}
-            IconComponent={MaterialCommunityIcons}
-            iconName="email"
+    <KeyboardAvoidingView
+      style={{flex: 1, backgroundColor: colors.mediumBlack}}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <View style={styles.loginContainer}>
+          <Image
+            source={require('../../assets/images/logo.png')}
+            style={styles.logo}
           />
-          <TextInput
-            placeholder="Password"
-            onChange={text => setPassword(text)}
-            IconComponent={MaterialCommunityIcons}
-            iconName="lock"
-            secureTextEntry={true}
-          />
-          <AppButton title="Sign In" onPress={login} isLoading={loading} />
+
+          <View style={styles.inputContainer}>
+            <AppText title={'Login'} fontSize={40} fontWeight="bold" />
+            <ErrorMessage message={error} />
+
+            <TextInput
+              placeholder="Email"
+              onChange={text => setEmail(text)}
+              IconComponent={MaterialCommunityIcons}
+              iconName="email"
+            />
+            <TextInput
+              placeholder="Password"
+              onChange={text => setPassword(text)}
+              IconComponent={MaterialCommunityIcons}
+              iconName="lock"
+              secureTextEntry={true}
+            />
+            <AppButton title="Sign In" onPress={login} isLoading={loading} />
+          </View>
+
+          <View style={styles.accountText}>
+            <AppText title="New on DevArena?" />
+            <AppText
+              title="Register"
+              color={colors.blue}
+              ml="2"
+              onPress={() => console.log('Pressed')}
+            />
+          </View>
         </View>
-
-        <View style={styles.accountText}>
-          <AppText title="New on DevArena?" />
-          <AppText
-            title="Register"
-            color={colors.blue}
-            ml="2"
-            onPress={() => console.log('Pressed')}
-          />
-        </View>
-      </View>
-    </Screen>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

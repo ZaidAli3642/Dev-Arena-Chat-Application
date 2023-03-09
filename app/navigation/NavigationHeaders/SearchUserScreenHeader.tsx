@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {PropsWithChildren, useState} from 'react';
 import {Header, Search} from '../../components';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {search as searchCall} from '../../redux/reducers/usersReducer';
 
 interface Props {
@@ -13,10 +13,11 @@ const SearchUserScreenHeader: React.FC<PropsWithChildren<Props>> = ({
   headerProps,
 }) => {
   const [search, setSearch] = useState('');
+  const user = useSelector((state: any) => state.auth.userInfo);
   const dispatch = useDispatch();
 
   const searchUser = () => {
-    dispatch(searchCall({search}));
+    dispatch(searchCall({search, userId: user._id}));
   };
 
   const navigation = useNavigation();

@@ -8,12 +8,9 @@ import {
 } from 'react-native';
 import React, {PropsWithChildren} from 'react';
 import Modal from 'react-native-modal';
-import {useDispatch} from 'react-redux';
 
 import {colors} from '../config';
 import AppText from './AppText';
-import {openImageLibrary, openPicker} from '../utils';
-import {imageModalVisibled} from '../redux/reducers/authReducer';
 
 interface Props {
   isVisible: boolean;
